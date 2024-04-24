@@ -1,0 +1,19 @@
+[gd_scene load_steps=5 format=3 uid="uid://ddy4cny8o5a5r"]
+
+[ext_resource type="PackedScene" uid="uid://bndvj1vrbvbar" path="res://scenes/02_background/land.tscn" id="1_alfr2"]
+[ext_resource type="PackedScene" uid="uid://qvpbv320jtw4" path="res://scenes/02_background/clouds.tscn" id="2_vh1u3"]
+[ext_resource type="PackedScene" uid="uid://ci36x1ocdwpop" path="res://scenes/05_collision_n_signals/player_05.tscn" id="4_h0848"]
+[ext_resource type="PackedScene" uid="uid://dus3ww4lu4xxd" path="res://scenes/03_enemy/enemySpawner.tscn" id="4_odj2j"]
+
+[node name="Lvl05" type="Node2D"]
+
+[node name="land" parent="." instance=ExtResource("1_alfr2")]
+
+[node name="clouds" parent="." instance=ExtResource("2_vh1u3")]
+SPEED = 100
+
+[node name="EnemySpawner" parent="." instance=ExtResource("4_odj2j")]
+position = Vector2(1, -17)
+
+[node name="Player" parent="." instance=ExtResource("4_h0848")]
+position = Vector2(128, 253)

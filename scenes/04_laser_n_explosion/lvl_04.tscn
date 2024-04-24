@@ -1,0 +1,17 @@
+[gd_scene load_steps=4 format=3 uid="uid://b0gg07ohhvvta"]
+
+[ext_resource type="PackedScene" uid="uid://bovce7r355843" path="res://scenes/04_laser_n_explosion/enemyBullet.tscn" id="1_60lmx"]
+[ext_resource type="PackedScene" uid="uid://bhxmhe7oebbbd" path="res://scenes/04_laser_n_explosion/playerBullet.tscn" id="2_d7d7k"]
+[ext_resource type="PackedScene" uid="uid://bv3267a0x8xth" path="res://scenes/04_laser_n_explosion/explosion.tscn" id="3_rspgh"]
+
+[node name="Lvl04" type="Node2D"]
+metadata/_edit_horizontal_guides_ = [98.0]
+
+[node name="playerBullet" parent="." instance=ExtResource("2_d7d7k")]
+position = Vector2(116.176, 135.095)
+
+[node name="explosion" parent="." instance=ExtResource("3_rspgh")]
+position = Vector2(183.897, 131)
+
+[node name="enemyBullet" parent="." instance=ExtResource("1_60lmx")]
+position = Vector2(62, 130.37)

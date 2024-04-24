@@ -1,0 +1,47 @@
+[gd_scene load_steps=7 format=3 uid="uid://c2umi1w154481"]
+
+[ext_resource type="Script" path="res://scenes/03_enemy/enemy_03.gd" id="1_87b83"]
+[ext_resource type="Texture2D" uid="uid://dt3yhkfsixuc8" path="res://assets/Spaceship-shooter-gamekit/spritesheets/enemy-small.png" id="2_jvplf"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_lmn20"]
+radius = 9.05539
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cqk68"]
+atlas = ExtResource("2_jvplf")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_t13cu"]
+atlas = ExtResource("2_jvplf")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_nbts1"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cqk68")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_t13cu")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 10.0
+}]
+
+[node name="enemySmall" type="Area2D" groups=["enemy"]]
+script = ExtResource("1_87b83")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_lmn20")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+texture_filter = 1
+sprite_frames = SubResource("SpriteFrames_nbts1")
+animation = &"idle"
+autoplay = "idle"
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+rect = Rect2(-5, -5, 10, 10)
+
+[connection signal="screen_entered" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_entered"]
+[connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]

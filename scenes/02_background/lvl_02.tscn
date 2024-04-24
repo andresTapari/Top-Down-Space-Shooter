@@ -1,0 +1,15 @@
+[gd_scene load_steps=4 format=3 uid="uid://cg73wkakkcpu2"]
+
+[ext_resource type="PackedScene" uid="uid://qvpbv320jtw4" path="res://scenes/02_background/clouds.tscn" id="1_g45gg"]
+[ext_resource type="PackedScene" uid="uid://bndvj1vrbvbar" path="res://scenes/02_background/land.tscn" id="2_en5e2"]
+[ext_resource type="PackedScene" uid="uid://do5cu5qqdctbg" path="res://scenes/01_player/player_01.tscn" id="3_qmyph"]
+
+[node name="lvl_02" type="Node2D"]
+
+[node name="land" parent="." instance=ExtResource("2_en5e2")]
+
+[node name="clouds" parent="." instance=ExtResource("1_g45gg")]
+SPEED = 100
+
+[node name="Player" parent="." instance=ExtResource("3_qmyph")]
+position = Vector2(128, 246)

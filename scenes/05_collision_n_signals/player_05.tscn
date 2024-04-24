@@ -1,0 +1,160 @@
+[gd_scene load_steps=19 format=3 uid="uid://ci36x1ocdwpop"]
+
+[ext_resource type="Script" path="res://scenes/05_collision_n_signals/player_05.gd" id="1_cimsn"]
+[ext_resource type="Texture2D" uid="uid://b7y8u0vjmltqv" path="res://assets/Spaceship-shooter-gamekit/spritesheets/ship.png" id="2_50qug"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3dehr"]
+size = Vector2(14, 15)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1gvt3"]
+atlas = ExtResource("2_50qug")
+region = Rect2(32, 0, 16, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jhsbf"]
+atlas = ExtResource("2_50qug")
+region = Rect2(32, 24, 16, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fj0ga"]
+atlas = ExtResource("2_50qug")
+region = Rect2(0, 0, 16, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_o1afl"]
+atlas = ExtResource("2_50qug")
+region = Rect2(0, 24, 16, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cu6b7"]
+atlas = ExtResource("2_50qug")
+region = Rect2(16, 0, 16, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_frc8l"]
+atlas = ExtResource("2_50qug")
+region = Rect2(16, 24, 16, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3gnwg"]
+atlas = ExtResource("2_50qug")
+region = Rect2(0, 0, 16, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dwkbq"]
+atlas = ExtResource("2_50qug")
+region = Rect2(0, 24, 16, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xu6k0"]
+atlas = ExtResource("2_50qug")
+region = Rect2(64, 0, 16, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_h8veh"]
+atlas = ExtResource("2_50qug")
+region = Rect2(64, 24, 16, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_28ver"]
+atlas = ExtResource("2_50qug")
+region = Rect2(48, 0, 16, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_soyyx"]
+atlas = ExtResource("2_50qug")
+region = Rect2(48, 24, 16, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_d6aq5"]
+atlas = ExtResource("2_50qug")
+region = Rect2(64, 0, 16, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ag6ks"]
+atlas = ExtResource("2_50qug")
+region = Rect2(64, 24, 16, 24)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_l6reh"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1gvt3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jhsbf")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fj0ga")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_o1afl")
+}],
+"loop": true,
+"name": &"left",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cu6b7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_frc8l")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3gnwg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dwkbq")
+}],
+"loop": true,
+"name": &"left_transition",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xu6k0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_h8veh")
+}],
+"loop": true,
+"name": &"right",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_28ver")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_soyyx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_d6aq5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ag6ks")
+}],
+"loop": true,
+"name": &"right_transition",
+"speed": 10.0
+}]
+
+[node name="Player" type="Area2D"]
+script = ExtResource("1_cimsn")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -4.5)
+shape = SubResource("RectangleShape2D_3dehr")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+unique_name_in_owner = true
+texture_filter = 1
+sprite_frames = SubResource("SpriteFrames_l6reh")
+animation = &"right_transition"
+autoplay = "right"
+frame_progress = 0.469386
+
+[node name="Muzle" type="Marker2D" parent="."]
+unique_name_in_owner = true
+position = Vector2(0, -16)
+
+[node name="WeaponTimer" type="Timer" parent="."]
+unique_name_in_owner = true
+wait_time = 0.1
+one_shot = true
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]
+[connection signal="timeout" from="WeaponTimer" to="." method="_on_weapon_timer_timeout"]

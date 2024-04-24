@@ -1,0 +1,50 @@
+[gd_scene load_steps=5 format=3 uid="uid://qvpbv320jtw4"]
+
+[ext_resource type="Script" path="res://scenes/02_background/background.gd" id="1_bw8re"]
+[ext_resource type="Texture2D" uid="uid://c5qtaejnvjd1y" path="res://assets/Spaceship-shooter-gamekit/Desert/backgrounds/clouds.png" id="2_2gwf3"]
+[ext_resource type="Texture2D" uid="uid://b8ayvrgdlk3qc" path="res://assets/Spaceship-shooter-gamekit/Desert/backgrounds/clouds-transparent.png" id="3_hbjmt"]
+
+[sub_resource type="Curve2D" id="Curve2D_qmcoy"]
+bake_interval = 10.0
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 128, -320, 0, 0, 0, 0, 128, 640)
+}
+point_count = 2
+
+[node name="clouds" type="Node2D"]
+script = ExtResource("1_bw8re")
+
+[node name="Path2D" type="Path2D" parent="."]
+unique_name_in_owner = true
+curve = SubResource("Curve2D_qmcoy")
+
+[node name="PathFollow2D" type="PathFollow2D" parent="Path2D"]
+position = Vector2(128, -320)
+rotates = false
+cubic_interp = false
+
+[node name="Sprite2D" type="Sprite2D" parent="Path2D/PathFollow2D"]
+texture_filter = 1
+texture = ExtResource("3_hbjmt")
+
+[node name="PathFollow2D2" type="PathFollow2D" parent="Path2D"]
+position = Vector2(128, 7.15256e-06)
+progress = 320.0
+rotates = false
+cubic_interp = false
+
+[node name="Sprite2D" type="Sprite2D" parent="Path2D/PathFollow2D2"]
+texture_filter = 1
+position = Vector2(0, -0.000366211)
+texture = ExtResource("3_hbjmt")
+
+[node name="PathFollow2D3" type="PathFollow2D" parent="Path2D"]
+position = Vector2(128, 320)
+progress = 640.0
+rotates = false
+cubic_interp = false
+
+[node name="Sprite2D" type="Sprite2D" parent="Path2D/PathFollow2D3"]
+texture_filter = 1
+position = Vector2(0, -0.000427246)
+texture = ExtResource("2_2gwf3")

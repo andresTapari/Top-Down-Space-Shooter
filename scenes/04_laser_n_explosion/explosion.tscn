@@ -1,0 +1,55 @@
+[gd_scene load_steps=9 format=3 uid="uid://bv3267a0x8xth"]
+
+[ext_resource type="Texture2D" uid="uid://cvghda5lwsjuv" path="res://assets/Spaceship-shooter-gamekit/spritesheets/explosion.png" id="1_v3ntx"]
+[ext_resource type="Script" path="res://scenes/04_laser_n_explosion/explosion.gd" id="2_rtpr6"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_b7lgn"]
+atlas = ExtResource("1_v3ntx")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_twfwb"]
+atlas = ExtResource("1_v3ntx")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nbwjw"]
+atlas = ExtResource("1_v3ntx")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8l2ag"]
+atlas = ExtResource("1_v3ntx")
+region = Rect2(48, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3ki08"]
+atlas = ExtResource("1_v3ntx")
+region = Rect2(64, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_jv5kr"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_b7lgn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_twfwb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nbwjw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8l2ag")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3ki08")
+}],
+"loop": false,
+"name": &"idle",
+"speed": 10.0
+}]
+
+[node name="explosion" type="AnimatedSprite2D"]
+sprite_frames = SubResource("SpriteFrames_jv5kr")
+animation = &"idle"
+autoplay = "idle"
+script = ExtResource("2_rtpr6")
+
+[connection signal="animation_finished" from="." to="." method="_on_animation_finished"]

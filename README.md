@@ -18,4 +18,4 @@ escenes/
 ```
 
 # Jugar:
-* Prueba este juego en el suiguiente enlace.
+* Prueba este juego en el suiguiente [enlace](https://andrestapa.itch.io/top-down-shooter-tutorial).

@@ -1,0 +1,30 @@
+[gd_scene load_steps=4 format=3 uid="uid://bdi1ie1yybyh0"]
+
+[ext_resource type="Script" path="res://scenes/07_ui_titles/hud.gd" id="1_1cw16"]
+[ext_resource type="FontFile" uid="uid://ytamch4xc0ol" path="res://assets/fonts/I-pixel-u.ttf" id="1_esn2v"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_sr83x"]
+font = ExtResource("1_esn2v")
+font_size = 32
+outline_size = 4
+outline_color = Color(0, 0, 0, 1)
+
+[node name="Hud" type="CanvasLayer"]
+process_mode = 3
+script = ExtResource("1_1cw16")
+
+[node name="LabelScore" type="Label" parent="."]
+process_mode = 3
+texture_filter = 1
+custom_minimum_size = Vector2(80, 0)
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -40.0
+offset_right = 40.0
+offset_bottom = 40.0
+grow_horizontal = 2
+text = "0"
+label_settings = SubResource("LabelSettings_sr83x")
+horizontal_alignment = 1
+vertical_alignment = 1

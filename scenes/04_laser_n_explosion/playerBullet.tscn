@@ -1,7 +1,8 @@
-[gd_scene load_steps=7 format=3 uid="uid://bhxmhe7oebbbd"]
+[gd_scene load_steps=8 format=3 uid="uid://bhxmhe7oebbbd"]
 
 [ext_resource type="Texture2D" uid="uid://d2x0h0budld5h" path="res://assets/Spaceship-shooter-gamekit/spritesheets/laser-bolts.png" id="1_fuii8"]
 [ext_resource type="Script" path="res://scenes/04_laser_n_explosion/playerBullet.gd" id="1_jv1rq"]
+[ext_resource type="AudioStream" uid="uid://bvmgsg8a8meob" path="res://assets/sfx/player_laser.wav" id="3_m3c1a"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_hcgci"]
 size = Vector2(3, 8)
@@ -45,6 +46,10 @@ frame_progress = 0.201112
 [node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
 position = Vector2(0.5, 0.5)
 scale = Vector2(0.25, 0.65)
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_m3c1a")
+autoplay = true
 
 [connection signal="area_entered" from="." to="." method="_on_area_entered"]
 [connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]

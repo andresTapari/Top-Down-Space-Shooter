@@ -1,0 +1,82 @@
+[gd_scene load_steps=7 format=3 uid="uid://to310q0soik7"]
+
+[ext_resource type="FontFile" uid="uid://ytamch4xc0ol" path="res://assets/fonts/I-pixel-u.ttf" id="1_24wy7"]
+[ext_resource type="Script" path="res://scenes/07_ui_titles/mainTitle.gd" id="1_y0sf0"]
+[ext_resource type="PackedScene" uid="uid://bndvj1vrbvbar" path="res://scenes/02_background/land.tscn" id="2_ov5tb"]
+[ext_resource type="AudioStream" uid="uid://c1kesc7bsyy2k" path="res://assets/music/Nesquence.ogg" id="3_repdf"]
+[ext_resource type="PackedScene" uid="uid://qvpbv320jtw4" path="res://scenes/02_background/clouds.tscn" id="3_s8qpj"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_d1dh6"]
+font = ExtResource("1_24wy7")
+font_size = 24
+font_color = Color(1, 0, 0, 1)
+outline_size = 4
+outline_color = Color(0.262745, 0.262745, 0.262745, 1)
+
+[node name="mainTitle" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_y0sf0")
+
+[node name="land" parent="." instance=ExtResource("2_ov5tb")]
+
+[node name="clouds" parent="." instance=ExtResource("3_s8qpj")]
+SPEED = 100
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.12549)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+custom_minimum_size = Vector2(0, 160)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -114.0
+offset_top = -47.5
+offset_right = 114.0
+offset_bottom = 47.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="VBoxContainer"]
+texture_filter = 1
+layout_mode = 2
+text = "TOP DOWN 
+SPACE SHOOTER"
+label_settings = SubResource("LabelSettings_d1dh6")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HSeparator" type="HSeparator" parent="VBoxContainer"]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Button" type="Button" parent="VBoxContainer"]
+texture_filter = 1
+layout_mode = 2
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 4
+theme_override_fonts/font = ExtResource("1_24wy7")
+theme_override_font_sizes/font_size = 16
+text = "START"
+flat = true
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_repdf")
+autoplay = true
+
+[connection signal="pressed" from="VBoxContainer/Button" to="." method="_on_button_pressed"]

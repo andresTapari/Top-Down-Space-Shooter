@@ -1,0 +1,32 @@
+[gd_scene load_steps=8 format=3 uid="uid://cklay6b1jc8kh"]
+
+[ext_resource type="PackedScene" uid="uid://bndvj1vrbvbar" path="res://scenes/02_background/land.tscn" id="1_fovmv"]
+[ext_resource type="Script" path="res://scenes/07_ui_titles/lvl_07.gd" id="1_lyjox"]
+[ext_resource type="PackedScene" uid="uid://qvpbv320jtw4" path="res://scenes/02_background/clouds.tscn" id="2_rxi2q"]
+[ext_resource type="PackedScene" uid="uid://dus3ww4lu4xxd" path="res://scenes/03_enemy/enemySpawner.tscn" id="3_cmk7s"]
+[ext_resource type="PackedScene" uid="uid://ci36x1ocdwpop" path="res://scenes/05_collision_n_signals/player_05.tscn" id="4_r8ulv"]
+[ext_resource type="AudioStream" uid="uid://8m0gmi5b1xvr" path="res://assets/music/spaceship shooter.ogg" id="5_chegy"]
+[ext_resource type="PackedScene" uid="uid://bdi1ie1yybyh0" path="res://scenes/07_ui_titles/hud.tscn" id="6_3by88"]
+
+[node name="lvl_07" type="Node2D"]
+script = ExtResource("1_lyjox")
+
+[node name="land" parent="." instance=ExtResource("1_fovmv")]
+
+[node name="clouds" parent="." instance=ExtResource("2_rxi2q")]
+SPEED = 100
+
+[node name="EnemySpawner" parent="." instance=ExtResource("3_cmk7s")]
+unique_name_in_owner = true
+position = Vector2(1, -17)
+
+[node name="Player" parent="." instance=ExtResource("4_r8ulv")]
+position = Vector2(128, 253)
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_chegy")
+autoplay = true
+
+[node name="Hud" parent="." instance=ExtResource("6_3by88")]
+
+[connection signal="finished" from="AudioStreamPlayer" to="." method="_on_audio_stream_player_finished"]

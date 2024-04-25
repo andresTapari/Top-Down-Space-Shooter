@@ -19,6 +19,6 @@ func _on_visible_on_screen_notifier_2d_screen_exited():
 	# Si la nave habia entrado en pantalla y ahora sale la eliminamos
 	if enteredScreen:
 		queue_free()
-		# comparamos si habia entrado en pantalla para evitar
+		# (comparamos si habia entrado en pantalla para evitar
 		# que se elimine en el momento que se crea fuera de los 
-		# limites de la pantalla
+		# limites de la pantalla)

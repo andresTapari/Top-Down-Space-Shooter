@@ -1,7 +1,10 @@
 extends Node2D
 
+## Señal que se emite cuando la unidad es creada
+signal enemy_created(enemy)	
+
 # Precargamos el nodo Enemigo
-@onready var ENEMY = preload("res://scenes/03_enemy/enemy_03.tscn")
+@onready var ENEMY = preload(Definitions.ENEMY_PATH)
 
 # Variables:
 var spawnerSpeed: int = 100				# Velocidad con la que se desplaza el spawner
@@ -24,3 +27,5 @@ func _on_timer_timeout():
 		newEnemy.global_position = %PathFollow2D.global_position
 		# lo agregamos al arbol del nivel
 		get_parent().add_child(newEnemy)
+		# notificamos que se creo la unidad
+		emit_signal("enemy_created", newEnemy)

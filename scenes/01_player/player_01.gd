@@ -25,4 +25,5 @@ func _process(delta):
 
 	# Si no se presiona nada:
 	else:
+		# Reproduce animación por defecto
 		%AnimatedSprite2D.play("idle")

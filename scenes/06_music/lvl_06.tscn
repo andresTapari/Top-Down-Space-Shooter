@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://bndvj1vrbvbar" path="res://scenes/02_background/land.tscn" id="1_d8m7x"]
 [ext_resource type="PackedScene" uid="uid://qvpbv320jtw4" path="res://scenes/02_background/clouds.tscn" id="2_h2nr6"]
-[ext_resource type="PackedScene" uid="uid://dus3ww4lu4xxd" path="res://scenes/03_enemy/enemySpawner.tscn" id="3_5e2k3"]
+[ext_resource type="PackedScene" uid="uid://dus3ww4lu4xxd" path="res://scenes/05_collision_n_signals/enemySpawner.tscn" id="3_5e2k3"]
 [ext_resource type="PackedScene" uid="uid://ci36x1ocdwpop" path="res://scenes/05_collision_n_signals/player_05.tscn" id="4_qw5b8"]
 [ext_resource type="AudioStream" uid="uid://8m0gmi5b1xvr" path="res://assets/music/spaceship shooter.ogg" id="5_gx2k2"]
 

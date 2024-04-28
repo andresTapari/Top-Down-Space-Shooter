@@ -21,7 +21,7 @@ func _on_visible_on_screen_notifier_2d_screen_entered():
 	# Establecemos en verdadero que la nave entro en pantalla
 	enteredScreen = true
 
-# Señal que se emite cuandenemeyo sale de la pantalla
+# Señal que se emite cuando el enemigo sale de la pantalla
 func _on_visible_on_screen_notifier_2d_screen_exited():
 	# Si la nave habia entrado en pantalla y ahora sale la eliminamos
 	if enteredScreen:
